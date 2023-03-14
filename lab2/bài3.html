@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Nhập họ và tên
+    let full_name = prompt("Nhập họ và tên:");
+
+    // Nhập giới tính
+    let gender = prompt("Nhập giới tính (Nam/Nữ):");
+
+    // Tách tên thành các phần: họ, tên đệm, tên riêng
+    let name_parts = full_name.split(" ");
+    let last_name = name_parts[0];
+    let middle_name = name_parts[1] ? name_parts[1] : "";
+    let first_name = name_parts[name_parts.length - 1];
+
+    // In ra 3 giá trị họ, tên đệm, tên riêng
+    console.log("Họ: " + last_name);
+    console.log("Tên đệm: " + middle_name);
+    console.log("Tên riêng: " + first_name);
+
+    // Thay đổi tên đệm dựa trên giới tính
+    if (gender == "Nam") {
+      middle_name = "Văn";
+    } else if (gender == "Nữ") {
+      middle_name = "Vẽ";
+    }
+
+    // In ra tên mới
+    let new_name = last_name + " " + middle_name + " " + first_name;
+    console.log("Tên mới: " + new_name);
+
+  </script>
+</body>
+
+</html>

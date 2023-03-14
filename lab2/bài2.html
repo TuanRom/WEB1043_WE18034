@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Nhập giá trị a ,b, c từ bàn phím
+      var a = parseFloat(prompt("Nhap vao a : "));
+      var b = parseFloat(prompt("Nhap vao b : "));
+      var c = parseFloat(prompt("Nhap vao c : "));
+
+      // Đưa ra điều kiện để trở thành tam giác
+      if (a > 0 && b > 0 && c > 0) {
+        if (a + b > c && a + c > b && b + c > a) {
+          // để trở thành tam thường , đều , vuông ,cân
+          if (a != b && b != c && a != c) {
+            // tam giác thường
+            document.write("Tam giác thường");
+          } else if (
+            a * a + b * b == c * c ||
+            b * b + c * c ||
+            a * a + c * c == b * b
+          ) {
+            // tam giác vuông
+            document.write("Tam giác vuông");
+          } else if (a == b && b == c) {
+            // tam giác đều
+            document.write("Tam giác đều");
+          } else {
+            document.write("Tam giác cân");
+          }
+        } else {
+          document.write(" a, b , c phải lớn hơn 0");
+        }
+      } else {
+        document.write("Nhập vào giá trị lớn hơn 0");
+      }
+    </script>
+  </body>
+</html>

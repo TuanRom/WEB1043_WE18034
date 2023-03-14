@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Nhập giá trị a, b, c từ bàn phím
+      let a = prompt("Nhập giá trị a:");
+      let b = prompt("Nhập giá trị b:");
+      let c = prompt("Nhập giá trị c:");
+
+      // Chuyển các giá trị a, b, c thành số
+      a = parseFloat(a);
+      b = parseFloat(b);
+      c = parseFloat(c);
+
+      // Tính delta
+      let delta = b * b - 4 * a * c;
+
+      // Kiểm tra giá trị delta
+      if (delta < 0) {
+        console.log("Phương trình vô nghiệm.");
+      } else if (delta === 0) {
+        let x = -b / (2 * a);
+        console.log("Phương trình có nghiệm kép x = " + x);
+      } else {
+        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+        console.log("Phương trình có hai nghiệm phân biệt:");
+        console.log("x1 = " + x1);
+        console.log("x2 = " + x2);
+      }
+    </script>
+  </body>
+</html>
