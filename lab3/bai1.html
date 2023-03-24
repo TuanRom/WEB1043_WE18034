@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Hàm tính điểm trung bình
+        function tinhDiemTrungBinh() {
+            // Mời nhập điểm 
+            let diemToan = parseFloat(prompt("Nhập điểm Toán:"));
+            let diemLy = parseFloat(prompt("Nhập điểm Lý:"));
+            let diemHoa = parseFloat(prompt("Nhập điểm Hóa:"));
+            let diemSinh = parseFloat(prompt("Nhập điểm Sinh:"));
+            // Nếu đều kiện không đúng từ 0 tới 10 thì thông báo cho người dùng nhập điểm sai
+            if (diemToan < 0 || diemToan > 10 ||
+                diemLy < 0 || diemLy > 10 ||
+                diemHoa < 0 || diemHoa > 10 ||
+                diemSinh < 0 || diemSinh > 10) {
+                alert("Điểm nhập vào không hợp lệ!");
+                return;
+            }
+            // Tính điểm trung bình
+            let diemTrungBinh = (diemToan + diemLy + diemHoa + diemSinh) / 4;
+            // Xếp loại 
+            let xepLoai;
+            if (diemTrungBinh >= 9 && diemTrungBinh <= 10) {
+                xepLoai = "Giỏi";
+            } else if (diemTrungBinh >= 7 && diemTrungBinh < 9) {
+                xepLoai = "Khá";
+            } else if (diemTrungBinh >= 5 && diemTrungBinh < 7) {
+                xepLoai = "Trung Bình";
+            } else {
+                xepLoai = "Yếu";
+            }
+
+            alert(`Điểm trung bình của bạn là ${diemTrungBinh}, xếp loại ${xepLoai}`);
+        }
+        // Tính điểm bằng swich key
+        function tinhDiemTrungBinhSwitch() {
+            let diemToan = parseFloat(prompt("Nhập điểm Toán:"));
+            let diemLy = parseFloat(prompt("Nhập điểm Lý:"));
+            let diemHoa = parseFloat(prompt("Nhập điểm Hóa:"));
+            let diemSinh = parseFloat(prompt("Nhập điểm Sinh:"));
+
+            if (diemToan < 0 || diemToan > 10 ||
+                diemLy < 0 || diemLy > 10 ||
+                diemHoa < 0 || diemHoa > 10 ||
+                diemSinh < 0 || diemSinh > 10) {
+                alert("Điểm nhập vào không hợp lệ!");
+                return;
+            }
+
+            let diemTrungBinh = (diemToan + diemLy + diemHoa + diemSinh) / 4;
+
+            let xepLoai;
+            switch (true) {
+                case diemTrungBinh >= 9 && diemTrungBinh <= 10:
+                    xepLoai = "Giỏi";
+                    break;
+                case diemTrungBinh >= 7 && diemTrungBinh < 9:
+                    xepLoai = "Khá";
+                    break;
+                case diemTrungBinh >= 5 && diemTrungBinh < 7:
+                    xepLoai = "Trung Bình";
+                    break;
+                default:
+                    xepLoai = "Yếu";
+            }
+
+            alert(`Điểm trung bình của bạn là ${diemTrungBinh}, xếp loại ${xepLoai}`)
+        }
+        // Viết hàm chính 
+        function main() {
+            while (true) {
+                let choice = prompt("Menu:\n1. Tính điểm trung bình (if else)\n2. Tính điểm trung bình (switch case)\n0. Thoát");
+                switch (choice) {
+                    case "1":
+                        tinhDiemTrungBinh();
+                        break;
+                    case "2":
+                        tinhDiemTrungBinhSwitch();
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        alert("Lựa chọn không hợp lệ!");
+                }
+            }
+        }
+        // gọi hàm 
+        main();
+    </script>
+</body>
+
+</html>

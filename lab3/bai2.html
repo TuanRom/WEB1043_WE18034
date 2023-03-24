@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MÁY TÍNH </title>
+</head>
+<body>
+	<h2>MÁY TÍNH</h2>
+	<input type="number" id="number1">
+	<select id="operator">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+	</select>
+	<input type="number" id="number2">
+	<button onclick="phepTinh()">=</button>
+	<p id="result"></p>
+
+	<script>
+		function phepTinh() {
+			let soThu1 = document.getElementById('number1').value;
+			let soThu2 = document.getElementById('number2').value;
+			let phepTinh = document.getElementById('operator').value;
+			let result;
+
+			switch(phepTinh) {
+				case '+':
+					result = parseFloat(soThu1) + parseFloat(soThu2);
+					break;
+				case '-':
+					result = parseFloat(soThu1) - parseFloat(soThu2);
+					break;
+				case '*':
+					result = parseFloat(soThu1) * parseFloat(soThu2);
+					break;
+				case '/':
+					result = parseFloat(soThu1) / parseFloat(soThu2);
+					break;
+			}
+
+			document.getElementById('result').innerHTML = 'Kết quả: ' + result;
+		}
+	</script>
+</body>
+</html>
