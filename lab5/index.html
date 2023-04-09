@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0px auto;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            background-color: rgb(218, 132, 104);
+            padding: 20px;
+        }
+        .container span{
+            color: black;
+            font-weight: bold;
+            font-size: large;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .container label{
+            margin-bottom: 5px;
+        }
+        .container input{
+            margin-bottom: 10px;
+        }
+        .button-area{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .btn{
+            padding: 2px 20px 2px 20px;
+            background-color: dimgray;
+            color: whitesmoke;
+            border: 0px;
+            box-shadow: 3px 3px 3px rgba(94, 113, 94, 0.884);
+            border-radius: 5px;
+        }
+        .btn:hover{
+            background-color: darkcyan;
+            font-weight: bold;
+        }
+        .row{
+            display: grid;
+            grid-template-columns: 25% 35% 20% 20%;
+        }
+
+    </style>
+</head>
+<body>
+    <!--container-->
+    <div class="container">
+        <!--tittle TODO LIST-->
+        <span>TODO LIST</span>
+        <!--label task name-->
+        <label for="">Task name</label>
+        <!--textbox for input task name-->
+        <input type="text" name="task-name" id="task-name">
+        <label for="">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <div class="button-area">
+            <button class="btn">ADD</button>
+        </div>
+        <h5>LIST TASKS</h5>
+        <section id="list-container">
+            <div class="row">
+                <div class="task-name">Name</div>
+                <div class="task-des">Description</div>
+                <div class="task-delete">Del</div>
+                <div class="task-edit">Edit</div>
+            </div>
+            <div class="row">
+                <div class="task-name"><input type="text"value="Task1"></div>
+                <div class="task-des"><input type="text"value="Di hoc"></div>
+                <div class="task-delete"><button>DEL</button></div>
+                <div class="task-edit"><button>EDIT</button></div>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+        let listSection = document.getElementById("list-container");
+        let btnAdd = document.getElementById("btnAdd");
+        btnAdd.addEventListener("click",()=>{
+            addTask();
+        });
+
+        function addTask(){
+            //create div class row
+            let row = document.createElement("div");
+            row.classList.add("row");
+            let disabledInput = true;
+
+            //create input de chua name
+            let name = document.createElement("input");
+            name.type="text";
+            name.value=document.getElementById("task-name").value;
+            name.disabled = true;
+
+            //create description
+            let description = document.createElement("input");
+            description.type = "text";
+            description.value = document.getElementById("description").value;
+            description.disabled = true;
+
+            //create delete button
+            let delDiv = document.createElement("div");
+            let btnDel = document.createElement("button");
+            btnDel.innerHTML = "del";
+            delDiv.appendChild(btnDel);
+
+            let editDiv = document.createElement("div");
+            let btnEdit= document.createElement("button");
+            btnEdit.innerHTML = "edit";
+            editDiv.appendChild(btnEdit);
+
+            //add to row
+            row.appendChild(name);
+            row.appendChild(description);
+            row.appendChild(delDiv);
+            row.appendChild(editDiv);
+
+            listSection.appendChild(row);
+
+            //add listener cho nut delete
+            btnDel.addEventListener("click",()=>{
+                listSection.removeChild(row);
+            });
+            
+            btnEdit.addEventListener("click",()=>{
+                name.disabled = !disabledInput;
+                descriptiom.disabled = !disabledInput;
+                btnEdit.innerHTML = disabledInput ? "Update" : "Edit";
+                disabledInput = !disabledInput;
+            });
+        }
+    </script>
+</body>
+</html>
