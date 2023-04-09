@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="myVideo" width="500" height="900" src="LẠC - Rhymastic (Lyrics Video).mp4">
+        <source src="" type="video">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="controls">
+        <button id="playPause">Play</button>
+        <button id="stop">Stop</button>
+        <button id="volumeUp">Volume Up</button>
+        <button id="volumeDown">Volume Down</button>
+        <button id="loop">Loop</button>
+    </div>
+
+    <script>
+        // Get video element and controls
+        const video = document.getElementById("myVideo");
+        const playPauseBtn = document.getElementById("playPause");
+        const stopBtn = document.getElementById("stop");
+        const volumeUpBtn = document.getElementById("volumeUp");
+        const volumeDownBtn = document.getElementById("volumeDown");
+        const loopBtn = document.getElementById("loop");
+
+        // Play/pause button click event listener
+        playPauseBtn.addEventListener("click", function () {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.innerHTML = "Pause";
+            } else {
+                video.pause();
+                playPauseBtn.innerHTML = "Play";
+            }
+        });
+
+        // Stop button click event listener
+        stopBtn.addEventListener("click", function () {
+            video.pause();
+            video.currentTime = 0;
+            playPauseBtn.innerHTML = "Play";
+        });
+
+        // Volume up button click event listener
+        volumeUpBtn.addEventListener("click", function () {
+            if (video.volume < 1.0) {
+                video.volume += 0.1;
+            }
+        });
+
+        // Volume down button click event listener
+        volumeDownBtn.addEventListener("click", function () {
+            if (video.volume > 0.0) {
+                video.volume -= 0.1;
+            }
+        });
+
+        // Loop button click event listener
+        loopBtn.addEventListener("click", function () {
+            if (video.loop) {
+                video.loop = false;
+                loopBtn.innerHTML = "Loop";
+            } else {
+                video.loop = true;
+                loopBtn.innerHTML = "Unloop";
+            }
+        });
+
+    </script>
+</body>
+
+</html>
