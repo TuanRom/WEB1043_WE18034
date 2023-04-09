@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            display: flex;
+            flex-direction: row;
+            padding: 50px;
+        }
+        .row1{
+            border: 3px solid black;
+            width: 300px;
+            height: 500px;
+            margin-right: 100px;
+        }
+        .row2{
+            width: 150px;
+        }
+        .colum1{
+            border: 1px dashed black;
+            padding: 20px 0px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <h1>Drap and Drop</h1>
+    <p>Drap the list items over the dustbin, and drop them to have the bin eat the item</p>
+    <div class="wrapper">
+        <div class="row1">
+
+        </div>
+        <div class="row2">
+            <div class="colum1" draggable="true">
+                one
+            </div>
+            <div class="colum1" draggable="true">
+                tow
+            </div>
+            <div class="colum1" draggable="true">
+                there
+            </div>
+            <div class="colum1" draggable="true">
+                four
+            </div>
+        </div>
+    </div>
+    <script>
+        var lists = document.querySelectorAll('.row1');
+        var list_items = document.querySelectorAll('.colum1')
+
+        var draggedItems = null;
+        
+        for (let i = 0; i < list_items.length; i++) {
+            const items = list_items[i];
+
+            items.addEventListener('dragstart', function (){
+                console.log('drapstart')
+                draggedItems = items;
+                setTimeout(function(){
+                    draggedItems.style.display = 'none';
+                
+                }, 0);
+            });
+            
+            items.addEventListener('dragend', function(){
+                console.log('dragend');
+                setTimeout(function(){
+                    draggedItems.style.display = 'block'
+                    draggedItems = null;
+                }, 0);
+            });
+            for (let j = 0; j < lists.length; j++) {
+                const li = lists[j];
+                li.addEventListener('dragover', function(e){
+                    console.log('dragover')
+                    e.preventDefault();
+                })
+                li.addEventListener('dragenter', function(e){
+                    e.preventDefault();
+                })
+                li.addEventListener('drop', function(e){
+                    console.log('drop');
+                    this.appendChild(draggedItems);
+                })
+            }
+        };
+        
+    </script>
+</body>
+</html>
