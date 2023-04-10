@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng kí</title>
+    <script src="asm.js"></script>
+    <link rel="stylesheet" href="slide.css">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            height: max-content;
+            position: relative;
+        }
+
+        header{
+            width: 100%;
+            height: 500px;
+            background-image: url(asm/banner1.png);
+        }
+
+        nav {
+            position: relative;
+            top: 0;
+            background-color: #1d1d1f;
+            width: 100%;
+            height: 50px;
+            
+        }
+        nav ul{
+            left: 500px;
+            position: absolute;
+            display: flex;
+            margin-right: 10px;
+        }
+
+        nav ul li{
+             left: 50px;
+            list-style: none;
+            margin: 15px;
+        }
+
+        nav ul li a{
+           
+            color: #fff;
+            display: inline-block;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        section{
+            text-align: center;
+            width: 100%;
+            height: 900px;
+            background-color: rgba(243, 239, 247, 0.774);
+            top: 10px;
+            
+        }
+        footer{
+            position: absolute;
+            width: 100%;
+            height: 400px;
+            
+        }
+        
+        .form{
+            left: 150px;
+            position: absolute;
+            background-color: rgba(225, 225, 243, 0.719);
+	width: 600px;
+	border-radius: 10px;
+	padding: 15px;
+	box-sizing: border-box;
+	border: 2px solid rgb(49, 42, 42);
+	margin-left: 20%;
+}
+form{
+	margin-left: 20px;
+}
+input[type=text],input[type=email] {
+  width: 90%;
+  padding: 8px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+select{
+	width: 94%;
+	padding: 8px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+}
+input[type=submit] {
+  width: 94%;
+  background-color: #7d78d9;
+  color: white;
+  padding: 14px 20px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.4s;
+}
+.inp{
+	width: 90%;
+  padding: 8px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+.inp span{
+	margin-right: 15px;
+}
+input[type=submit]:hover {
+  background-color: #493eff;
+}
+input[type=radio],input[type=checkbox] {
+  margin-right: 5px;
+}
+label{
+  font-weight: bold;
+  margin-top: 8px;
+  display: block;
+}
+textarea{
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 10px;
+  outline: none;
+	margin-top: 8px;
+  width: 482px;
+}
+.error{
+  font-size: 12px;
+  color: red;
+}
+.h1{
+    font-size: 30px;
+}
+      
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header></header>
+
+        <nav>
+            <ul>
+                <li><a href="agm2.html">Trang chủ</a></li> |
+                <li><a href="trienlam.html">Trang triển lãm</a></li> |
+                <li><a href="#" onclick="dangnhap()">Trang đăng kí</a></li> |
+            </ul>
+        </nav>
+
+        <section>
+            
+            <article id="dangnhap">
+                <h1 class="h1">Đăng kí thành viên</h1>
+                <div class="form">
+                    <form action="" onsubmit="return KiemTra()">
+                        <label for="student">Mã sinh viên: </label>
+                        <input type="text" id="student" name="student">
+                        <div id="error1" class="error"></div>
+                        <br>
+                        <label for="name">Họ và tên: </label>
+                        <input type="text" name="name" id="name">
+                        <div id="error2" class="error"></div>
+                        <br>
+                        <label for="email">Email: </label>
+                        <input type="email" name="email" id="email">
+                        <div id="error3" class="error"></div>
+                        <br>
+                        <label for="gender">Giới tính: </label>
+                        <div class="inp">
+                            <input type="radio" name="gender"><span>Nam</span>
+                            <input type="radio" name="gender"><span>Nữ</span>
+                        </div>
+                        <div id="error4" class="error"></div>
+                        <label for="subject">Sở thích</label>
+                        <div class="inp">
+                            <input class="sothich" type="checkbox"><span>Đọc sách</span>
+                            <input class="sothich" type="checkbox"><span>Du lịch</span>
+                            <input class="sothich" type="checkbox"><span>Âm nhạc</span>
+                            <input class="sothich" type="checkbox"><span>Ẩm thực</span>
+                            <input class="sothich" type="checkbox"><span>Khác</span>
+                        </div>
+                        <div id="error5" class="error"></div>
+                        <label for="national">Quốc tịch</label>
+                        <select name="national" id="national">
+                            <option value="0">Chọn quốc tịch</option>
+                            <option value="1">Việt Nam</option>
+                            <option value="2">Thái Lan</option>
+                            <option value="3">Lào</option>
+                            <option value="4">Trung Quốc</option>
+                            <option value="5">Hàn Quốc</option>
+                        </select>
+                        <div id="error6" class="error"></div>
+                        <label for="text">Ghi chú: </label>
+                        <textarea name="text" id="" cols="46" rows="5" id="note" maxlength="200" ></textarea>
+                        <div id="error7" class="error"></div>
+                        <input type="submit" value="Đăng ký">
+                    </form>
+                </div>
+            </article>
+            
+ 
+        </section>
+        <footer>
+            <img src="asm/footer.png" width="100%" height="400px" alt="slider-img">
+        </footer>
+    </div>
+    
+</body>
+<script>
+    function KiemTra(){
+	var student=document.getElementById("student");
+	var name=document.getElementById("name");
+	var email=document.getElementById("email");
+	var national=document.getElementById("national");
+
+	var error1=document.getElementById("error1");
+	var error2=document.getElementById("error2");
+	var error3=document.getElementById("error3");
+	var error4=document.getElementById("error4");
+	var error5=document.getElementById("error5");
+	var error6=document.getElementById("error6");
+	var error7=document.getElementById("error7");
+
+	var gender=document.getElementsByName("gender");
+	var sothich=document.getElementsByClassName("sothich");
+	var note=document.getElementById("note");
+
+
+	//kiểm tra mã sinh viên
+	if(student.value.length==0){
+		student.style.border="1px solid red";
+		error1.innerHTML="Mã sinh viên không được để trống!";
+		return false;
+	}else{
+		student.style.border="none";
+		error1.innerHTML="";
+	}
+
+	//kiểm tra họ tên
+	if(name.value.length==0){
+		name.style.border="1px solid red";
+		error2.innerHTML="Họ tên sinh viên không được để trống!";
+		return false;
+	}else{
+		name.style.border="none";
+		error2.innerHTML="";
+	}
+
+	//kiểm tra email
+	if(email.value.length==0){
+		email.style.border="1px solid red";
+		error3.innerHTML="Email không được để trống!";
+		return false;
+	}else{
+		email.style.border="none";
+		error3.innerHTML="";
+	}
+
+	//kiểm tra giới tính
+	if(gender[0].checked!==true & gender[1].checked!==true){
+		error4.innerHTML="Bạn phải chọn giới tính!";
+		return false;
+	}else{
+		error4.innerHTML="";
+	}
+
+	//Kiểm tra sở thích
+	var kt=0;
+	for(var i=0;i<sothich.length;i++){
+		if(sothich[i].checked==true){
+			kt++;
+		}
+	}
+	if(kt==0){
+		error5.innerHTML="Bạn phải chọn ít nhất một sở thích!";
+		return false;
+	}else{
+		error5.innerHTML="";
+	}
+	//kiểm tra chọn quốc tịch
+	if(national.value==0){
+		error6.innerHTML=" Bạn phải chọn quốc tịch!";
+		return false;
+	}else{
+		error6.innerHTML="";
+	}
+
+	//ghi chú tối đa 200 ký tự: sử dụng thuộc tính maxlength="200" ở file resgist.html
+	if(note.value.length>200){
+		error7.innerHTML="Bạn chỉ được nhập tối đa 200 ký tự!";
+		note.style.border="1px solid red";
+		return false;
+	}else{
+		error7.innerHTML="";
+		note.style.border="1px solid #ccc";
+	}
+}
+
+</script>
+
+</html>
